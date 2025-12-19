@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+dist-*/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+wheelhouse/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.env
+.env.*
+.venv*/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.hypothesis/
+
+# IDE/editor
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# pypackager artifacts
+pypackager.lock
+pypackager-venv-*/
+# Any ad-hoc test output directories
+/tmp/
+
+# Docker build context (if created locally)
+*.tar
+
+# Hatch build metadata (if any)
+*.dist-info/

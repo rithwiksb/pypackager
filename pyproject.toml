@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pypackager"
+version = "0.1.0"
+description = "Unified build pipeline to produce wheels, Docker images, and binaries from a Python project."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  { name = "Rithwik Bharadwaj", email = "rithwiksbharadwaj@gmail.com" }
+]
+keywords = ["packaging", "build", "release", "wheel", "docker", "pyinstaller"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "tomli; python_version < '3.11'"
+]
+
+[project.urls]
+Homepage = "https://github.com/rithwiksb/pypackager"
+Repository = "https://github.com/rithwiksb/pypackager"
+Issues = "https://github.com/rithwiksb/pypackager/issues"
+
+
+[project.scripts]
+pypackager = "pypackager.cli:main"
+pypack = "pypackager.cli:main"
+
+[project.entry-points."pypackager.builders"]
+wheel = "pypackager.builders.wheel:WheelBuilder"
+docker = "pypackager.builders.docker:DockerBuilder"
+binary = "pypackager.builders.binary:BinaryBuilder"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pypackager"]
+
+[tool.hatch.build]
+only-include = [
+  "src/pypackager",
+  "README.md",
+  "LICENSE"
+]

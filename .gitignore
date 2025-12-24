@@ -57,6 +57,7 @@ Thumbs.db
 # pypackager artifacts
 pypackager.lock
 pypackager-venv-*/
+dist-test/
 # Any ad-hoc test output directories
 /tmp/
 

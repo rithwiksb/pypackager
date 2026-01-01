@@ -14,8 +14,15 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
+class DockerConfig:
+    base_image: str = "python:3.12-slim"
+    entrypoint: Optional[str] = None
+
+
+@dataclass
 class Config:
     targets: List[str] = field(default_factory=lambda: ["wheel", "docker", "binary"])
+    docker: DockerConfig = field(default_factory=DockerConfig)
 
 
 DEFAULT_CONFIG_FILENAMES = ["pypackager.toml", ".pypackager.toml"]
@@ -40,4 +47,11 @@ def load_config(project_root: Path, config_path: Optional[Path] = None) -> Confi
     data = tomllib.loads(config_path.read_text(encoding="utf-8"))
     cfg = data.get("pypackager", {})
     targets = cfg.get("targets") or ["wheel", "docker", "binary"]
-    return Config(targets=list(targets))
+    
+    docker_cfg = cfg.get("docker", {})
+    docker_config = DockerConfig(
+        base_image=docker_cfg.get("base_image", "python:3.12-slim"),
+        entrypoint=docker_cfg.get("entrypoint"),
+    )
+    
+    return Config(targets=list(targets), docker=docker_config)

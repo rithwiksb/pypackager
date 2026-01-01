@@ -43,11 +43,18 @@ pypack build --only docker --output dist
 Outputs are written under `dist/<target>/`.
 
 ## Configuration
-`pypackager.toml` in the project root is optional. Minimal example:
+Optional `pypackager.toml` in the project root:
 ```toml
 [pypackager]
 targets = ["wheel", "docker", "binary"]
+
+[pypackager.docker]
+base_image = "python:3.12-slim"
+# Optional: custom entrypoint
+# entrypoint = '["python", "-m", "myapp"]'
 ```
+
+See `pypackager.toml.example` for full options.
 
 ## Architecture Overview
 - Scanner: parses PEP 621 `pyproject.toml` to obtain name, version, Python requirement, dependencies.

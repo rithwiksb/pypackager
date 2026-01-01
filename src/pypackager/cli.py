@@ -51,7 +51,7 @@ def main(argv: List[str] | None = None) -> int:
     cfg = load_config(project_root, Path(args.config) if args.config else None)
     targets = args.only or cfg.targets
 
-    pipeline = Pipeline(project_root)
+    pipeline = Pipeline(project_root, config=cfg)
     pipeline.run(targets=targets, output_dir=output_dir)
 
     return 0

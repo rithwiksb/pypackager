@@ -1,0 +1,16 @@
+# Example pypackager.toml configuration file
+# Place this in your project root to customize build behavior
+
+[pypackager]
+# Specify which targets to build (default: all)
+targets = ["wheel", "docker", "binary"]
+
+# Docker builder configuration
+[pypackager.docker]
+# Base image template; use <version> for auto-detection from requires-python
+# Default: "python:3.12-slim"
+base_image = "python:3.12-slim"
+
+# Optional: Custom entrypoint command for Docker CMD
+# If not set, defaults to: ["python", "-m", "your_package_name"]
+# entrypoint = '["python", "-m", "myapp"]'

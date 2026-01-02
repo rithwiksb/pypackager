@@ -2,6 +2,9 @@
 
 Unified build pipeline to produce multiple distribution formats (wheels, Docker images, standalone binaries) from a Python project using a single command.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+
 ## Features (MVP)
 - Wheel builder (pure-Python preferred; ABI wheels allowed)
 - Docker builder (multi-stage with `python:<version>-slim` runtime)
